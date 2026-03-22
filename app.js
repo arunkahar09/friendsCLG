@@ -1,31 +1,36 @@
 const express = require('express');
+const serverless = require('serverless-http'); // Yeh line add karein
+const path = require('path'); // Path module zaroori hai
 const app = express();
 
-
-// module.exports = app;
-// module.exports.handler = serverless(app);
-// const serverless = require("serverless-http")
-
 const friends = require('./data/friends.json');
+const groupPhotos = require('./data/group.json');
 
-app.set('view engine', 'ejs'); // EJS ko engine set karna
-app.use(express.static('public')); // Static files ke liye
+// EJS aur Views setup (Vercel ke liye ye path zaroori hai)
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); 
 
+// Static files (CSS/Images)
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes
 app.get('/', (req, res) => {
-    res.render('home', { title: 'Home Page', message: 'Welcome to my Project!' ,username : 'Arun'
-    });
+    res.render('home', { title: 'Home Page', message: 'Welcome to my Project!', username: 'Arun' });
 });
 
 app.get('/home2', (req, res) => {
-    res.render('home2',{friends});
-    // res.render('home2', { title: 'Home Page', message: 'Welcome to my Project!' ,username : 'Arun', friends: friends
-    // });
+    res.render('home2', { friends });
 });
-const groupPhotos = require('./data/group.json')
+
 app.get('/gallery', (req, res) => {
     res.render('gallery', { groupPhotos });
 });
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server is running at http://localhost:${PORT}`));
+// Production (Vercel) ke liye export, local ke liye listen
+if (process.env.NODE_ENV === 'production') {
+    module.exports = app;
+    module.exports.handler = serverless(app);
+} else {
+    const PORT = 3000;
+    app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+}
