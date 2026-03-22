@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>A Special Note for Friends</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Netflix jaisa subtle grain effect */
+        .netflix-bg {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-black text-zinc-300 font-sans selection:bg-red-600 selection:text-white">
+
+    <!-- Main Container with Netflix Radial Gradient -->
+    <div class="netflix-bg min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+
+        <!-- Decorative Red Glow (Netflix Theme) -->
+        <div class="absolute -top-20 -left-20 w-96 h-96 bg-red-900/20 rounded-full blur-[120px]"></div>
+        <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-red-900/10 rounded-full blur-[120px]"></div>
+
+        <div class="relative max-w-3xl w-full z-10" data-aos="fade-up">
+
+            <!-- Header Section -->
+            <header class="mb-12 border-l-4 border-red-600 pl-6">
+                <h1 class="text-5xl md:text-6xl font-black text-white tracking-tighter uppercase">
+                    A Special <span class="text-red-600">Note</span> 
+                </h1>
+                <p class="text-zinc-500 font-medium mt-2 tracking-widest uppercase text-sm">For my best friends</p>
+            </header>
+
+            <!-- Message Section -->
+            <div class="space-y-8 text-lg md:text-xl leading-relaxed font-medium text-zinc-300 text-left " data-aos="fade-right" data-aos-duration="3000" >
+
+                <p
+                    class="first-letter:text-5xl first-letter:font-bold first-letter:text-red-600 first-letter:mr-3 first-letter:float-left">
+                    Aaj 11/03/26 10pm baithe-baite purani baatein yaad aa rahi thi ya soch rha tha  ki meri Tum sab mere liye kya ho  !. Sach bataun , meri puri life mein mujhe tum jaise dost pehle
+                    kabhi nahi mile.  Jab bhi me purani baton ko yaad karta hoon, toh samajh aata hai ki college mere liye sirf
+                    padhai ya degree ka zariya nahi tha, balki  tum jaise yaaron ko paana tha.
+                </p>
+
+                <p>
+                    Hum college mein mile zaroor hain, lekin tumne itne kam waqt mein mere dil mein jo jagah banayi hai,
+                    woh shayad bachpan ke Friend bhi nahi bana paate. Meri life ke har mod par, tum sab ne meri help
+                    ki—chahe wo exams ka stress ho, meri personal pareshaniyan, ya wo chhoti-chhoti khushiyan—tumne
+                    hamesha mera Saath diya hai.
+                </p>
+
+                <p class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 italic shadow-2xl">
+                    "I really don’t want us to be just 'college friends.' I want this friendship to last way beyond these four years."
+                </p>
+
+                <p>
+                    "Thanks for being there through everything. Means a lot."
+                </p>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-16 pt-8 border-t border-zinc-800 flex justify-between items-center">
+                <div>
+                    <p class="text-zinc-500 text-sm">Hamesha saath rehna! Bruhh...</p>
+                    <p class="text-white font-black text-2xl tracking-tight"> >>> </p>
+                </div>
+                <div
+                    class="h-12 w-12 border-2 border-red-600 rounded-full flex items-center justify-center text-red-600 font-bold">
+                    A.K
+                </div>
+            </footer>
+
+            <div class="mt-12 text-centre">
+            <a href="/home2">
+                <button class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold tracking-wide transition duration-300 shadow-lg hover:scale-105">FlashBack   </button>
+            </a>
+        </div>
+
+        </div>
+        
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 2500, // Global speed
+            once: false
+        });
+    </script>
+</body>
+
+</html>

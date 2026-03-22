@@ -1,0 +1,19 @@
+{
+  "name": "friendslove",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Arun Kahar",
+  "license": "ISC",
+  "description": "For Friends Love ",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "serverless-http": "^4.0.0",
+    "tailwindcss": "^4.2.1"
+  }
+}

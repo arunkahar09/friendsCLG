@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slow Rainfall Memories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Slow Rainfall Animation */
+        @keyframes slowFall {
+            0% { 
+                transform: translateY(-100vh) scale(0.7); 
+                opacity: 0; 
+            }
+            30% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(0) scale(1); 
+                opacity: 1; 
+            }
+        }
+
+        /* Custom Class for the animation */
+        .animate-slow-fall {
+            animation-name: slowFall;
+            animation-duration: 4s; 
+            animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1);
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-[#050505] text-white overflow-x-hidden">
+
+    <header class="py-20 text-center">
+        <h1 class="text-6xl font-black tracking-tighter text-white uppercase" data-aos="fade-down">
+            THIS MOMENT NEVER <span class="text-red-600">Arive</span>
+        </h1>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6">
+        <div id="rain-container" class="columns-1 sm:columns-2 lg:columns-3 gap-10 space-y-10">
+            
+            <% groupPhotos.forEach((photo, index) => { %>
+                <div class="rain-drop break-inside-avoid animate-slow-fall">
+                    <div class="relative group rounded-[2.5rem] border border-zinc-900 overflow-hidden bg-zinc-900 shadow-[0_30px_60px_rgba(0,0,0,0.8)] transition-all duration-700 hover:border-red-600/40">
+                        
+                        <img src="/images/group/<%= photo.image %>" 
+                             class="w-full h-auto object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end p-10">
+                            <div>
+                                <span class="text-red-600 font-mono text-[10px] tracking-widest uppercase">Memory // 0<%= index + 1 %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+
+        </div>
+    </main>
+
+    <footer class="py-32 text-center">
+        <a href="/home2" class="px-12 py-4 border border-zinc-800 text-zinc-500 font-bold uppercase tracking-widest text-[10px] rounded-full hover:bg-white hover:text-black hover:border-white transition-all duration-500">
+            ← Back to Home
+        </a>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('rain-container');
+            const items = Array.from(container.children);
+
+            // 1. SHUFFLE: Har refresh par different structure
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                container.appendChild(items[j]);
+            }
+
+            // 2. SLOW RAIN DELAY: Har photo ke beech ka gap badhaya gaya
+            const updatedItems = Array.from(container.children);
+            updatedItems.forEach((item) => {
+                // Delay 0s se 4s ke beech random hoga, jisse boondein dheere dheere aayengi
+                const randomDelay = Math.random() * 4; 
+                item.style.animationDelay = randomDelay + "s";
+            });
+        });
+    </script>
+
+</body>
+</html>
